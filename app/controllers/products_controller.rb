@@ -4,6 +4,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.friendly.find(params[:slug])
+    @product = Product.find_by!(slug: params[:slug])
   end
 end
