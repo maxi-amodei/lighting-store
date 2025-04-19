@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full bg-white">
   <head>
-    <meta charset="utf-8">
-    <title>Test Tailwind</title>
+    <title>LUXIlumina - Iluminación de Diseño</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
   </head>
 
-  <body class="min-h-screen bg-white">
-    <%= render "shared/header" %>
+  <body class="h-full">
+    <%= render 'shared/header' %>
 
-    <!-- Add padding-top to account for fixed header -->
-    <main class="pt-16 min-h-[calc(100vh-4rem)]">
+    <main class="min-h-screen">
       <%= yield %>
     </main>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>

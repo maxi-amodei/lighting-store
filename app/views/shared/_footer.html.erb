@@ -1,0 +1,82 @@
+<footer class="text-white bg-gray-900">
+  <div class="container px-4 py-12 mx-auto">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+      <!-- Column 1: Logo and information -->
+      <div>
+        <%= link_to "#", class: "flex items-center mb-4" do %>
+          <span class="text-2xl font-bold text-white">LUX</span>
+          <span class="text-2xl font-light text-white">Ilumina</span>
+        <% end %>
+        <p class="mb-4 text-gray-400">
+          Iluminación de diseño para transformar tus espacios con estilo y elegancia.
+        </p>
+        <div class="flex space-x-4">
+          <%= link_to "#", aria: { label: "Facebook" } do %>
+            <%= inline_svg_tag "facebook", class: "h-5 w-5 text-gray-400 hover:text-white transition-colors" %>
+          <% end %>
+          <%= link_to "#", aria: { label: "Instagram" } do %>
+            <%= inline_svg_tag "instagram", class: "h-5 w-5 text-gray-400 hover:text-white transition-colors" %>
+          <% end %>
+          <%= link_to "#", aria: { label: "Twitter" } do %>
+            <%= inline_svg_tag "twitter", class: "h-5 w-5 text-gray-400 hover:text-white transition-colors" %>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Column 2: Categories -->
+      <div>
+        <h3 class="mb-4 text-lg font-semibold">Categorías</h3>
+        <ul class="space-y-2">
+          <li>
+            <%= link_to "Lámparas Colgantes", "#", class: "text-gray-400 hover:text-white transition-colors" %>
+          </li>
+          <li>
+            <%= link_to "Lámparas de Pie", "#", class: "text-gray-400 hover:text-white transition-colors" %>
+          </li>
+          <li>
+            <%= link_to "Lámparas de Mesa", "#", class: "text-gray-400 hover:text-white transition-colors" %>
+          </li>
+          <li>
+            <%= link_to "Iluminación Exterior", "#", class: "text-gray-400 hover:text-white transition-colors" %>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Information -->
+      <div>
+        <h3 class="mb-4 text-lg font-semibold">Información</h3>
+        <ul class="space-y-2">
+          <li>
+            <%= link_to "Sobre Nosotros", "#", class: "text-gray-400 hover:text-white transition-colors" %>
+          </li>
+          <li>
+            <%= link_to "Contacto", "#", class: "text-gray-400 hover:text-white transition-colors" %>
+          </li>
+          <li>
+            <%= link_to "Términos y Condiciones", "#", class: "text-gray-400 hover:text-white transition-colors" %>
+          </li>
+          <li>
+            <%= link_to "Política de Devoluciones", "#", class: "text-gray-400 hover:text-white transition-colors" %>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Payment Methods -->
+      <div>
+        <h3 class="mb-4 text-lg font-semibold">Métodos de Pago</h3>
+        <p class="mb-2 text-gray-400">Aceptamos:</p>
+        <div class="flex flex-wrap gap-2">
+          <div class="px-2 py-1 text-xs font-medium text-gray-900 bg-white rounded">Visa</div>
+          <div class="px-2 py-1 text-xs font-medium text-gray-900 bg-white rounded">Mastercard</div>
+          <div class="px-2 py-1 text-xs font-medium text-gray-900 bg-white rounded">American Express</div>
+          <div class="px-2 py-1 text-xs font-medium text-gray-900 bg-white rounded">MercadoPago</div>
+          <div class="px-2 py-1 text-xs font-medium text-gray-900 bg-white rounded">Transferencia</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-8 mt-12 text-sm text-center text-gray-400 border-t border-gray-800">
+      <p>© <%= Time.current.year %> LUXIlumina. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>

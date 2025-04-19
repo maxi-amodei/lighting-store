@@ -1,0 +1,15 @@
+<div class="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-sm group hover:shadow-md">
+  <div class="relative overflow-hidden aspect-square">
+    <%= image_tag product.image_url, alt: product.name, class: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300", loading: "lazy" %>
+  </div>
+  <div class="p-4">
+    <h3 class="mb-2 text-lg font-medium text-gray-900"><%= product.name %></h3>
+    <div class="flex items-center justify-between">
+      <p class="text-xl font-bold text-gray-900"><%= number_to_currency(product.price) %></p>
+      <button class="inline-flex items-center px-3 py-2 text-sm font-medium text-white transition-colors bg-gray-900 rounded hover:bg-gray-800">
+        <%= inline_svg_tag "cart", class: "h-4 w-4 mr-2" %>
+        <span>Agregar</span>
+      </button>
+    </div>
+  </div>
+</div>
