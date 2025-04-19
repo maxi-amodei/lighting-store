@@ -1,68 +1,60 @@
-<header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm" data-controller="header">
   <div class="container px-4 py-4 mx-auto">
     <div class="flex items-center justify-between">
       <!-- Logo -->
-      <%= link_to "#", class: "flex items-center" do %>
+      <%= link_to "/", class: "flex items-center" do %>
         <span class="text-2xl font-bold text-gray-900">LUX</span>
-        <span class="text-2xl font-light text-gray-900">Ilumina</span>
+        <span class="ml-1 text-2xl font-light text-gray-900">Ilumina</span>
       <% end %>
 
       <!-- Desktop Navigation -->
       <nav class="items-center hidden space-x-8 md:flex">
-        <%= link_to "Colgantes", "#", class: "text-gray-700 hover:text-gray-900 font-medium" %>
-        <%= link_to "De pie", "#", class: "text-gray-700 hover:text-gray-900 font-medium" %>
-        <%= link_to "Exterior", "#", class: "text-gray-700 hover:text-gray-900 font-medium" %>
-        <%= link_to "Contacto", "#", class: "text-gray-700 hover:text-gray-900 font-medium" %>
+        <%= link_to "Colgantes", "/categoria/colgantes", class: "text-gray-700 hover:text-gray-900 font-medium" %>
+        <%= link_to "De pie", "/categoria/de-pie", class: "text-gray-700 hover:text-gray-900 font-medium" %>
+        <%= link_to "Exterior", "/categoria/exterior", class: "text-gray-700 hover:text-gray-900 font-medium" %>
+        <%= link_to "Contacto", "/contacto", class: "text-gray-700 hover:text-gray-900 font-medium" %>
       </nav>
 
       <!-- Actions -->
       <div class="flex items-center space-x-4">
-        <button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100" aria-label="Carrito de compras">
-          <%= inline_svg_tag "cart", class: "h-5 w-5" %>
+        <button
+          data-action="header#toggleSearch"
+          class="items-center justify-center hidden w-10 h-10 rounded-full md:flex hover:bg-gray-100"
+          aria-label="Buscar">
+          <%= inline_svg_tag "search", class: "h-5 w-5 text-gray-600" %>
         </button>
 
-        <!-- Mobile Menu Toggle -->
-        <div class="md:hidden">
-          <input type="checkbox" id="menu-toggle" class="hidden peer" />
-          <label for="menu-toggle" class="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-gray-100" aria-label="Menú">
-            <%= inline_svg_tag "menu", class: "h-5 w-5" %>
-          </label>
-        </div>
+        <button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100" aria-label="Carrito de compras">
+          <%= inline_svg_tag "cart", class: "h-5 w-5 text-gray-600" %>
+        </button>
+
+        <button
+          data-action="header#toggleMenu"
+          class="flex items-center justify-center w-10 h-10 rounded-full md:hidden hover:bg-gray-100"
+          aria-label="Menú">
+          <%= inline_svg_tag "menu", class: "h-5 w-5 text-gray-600" %>
+        </button>
       </div>
     </div>
 
     <!-- Search Bar -->
-    <%#= render "shared/search_bar" %>
-    <!-- Mobile Menu -->
-    <div class="hidden peer-checked:block md:hidden">
-      <nav class="pb-4 mt-4 space-y-2">
-        <%= link_to "Colgantes", "#", class: "block py-2 text-gray-700 hover:text-gray-900 font-medium" %>
-        <%= link_to "De pie", "#", class: "block py-2 text-gray-700 hover:text-gray-900 font-medium" %>
-        <%= link_to "Exterior", "#", class: "block py-2 text-gray-700 hover:text-gray-900 font-medium" %>
-        <%= link_to "Contacto", "#", class: "block py-2 text-gray-700 hover:text-gray-900 font-medium" %>
-
-        <!-- Search in mobile menu -->
-        <div class="mt-2">
-          <div class="relative search-wrapper">
-            <div class="flex items-center transition-colors duration-200 border border-gray-300 rounded-md search-field bg-gray-50 hover:bg-gray-100 focus-within:bg-gray-100">
-              <svg class="w-5 h-5 ml-3 text-gray-400" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M13.98 15.395a6.294 6.294 0 111.414-1.414l4.602 4.601-1.414 1.414-4.602-4.601zm.607-5.101a4.294 4.294 0 11-8.587 0 4.294 4.294 0 018.587 0z" fill="currentColor"></path>
-              </svg>
-              <%= form_with url: "#", method: :get, class: "flex-1" do |f| %>
-                <%= f.search_field :q, 
-                    placeholder: "¿Qué estás buscando?", 
-                    class: "w-full px-3 py-2 bg-transparent focus:outline-none",
-                    aria: { label: "Buscar productos" },
-                    role: "combobox",
-                    maxlength: "150",
-                    autocomplete: "off",
-                    autocorrect: "off",
-                    spellcheck: "false" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </nav>
+    <div data-header-target="search" class="relative hidden mt-4">
+      <input type="search" placeholder="Buscar productos..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent" aria-label="Buscar productos">
+      <%= inline_svg_tag "search", class: "absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" %>
     </div>
+
+    <!-- Mobile Menu -->
+    <nav data-header-target="menu" class="hidden pb-4 mt-4 space-y-2 md:hidden">
+      <%= link_to "Colgantes", "/categoria/colgantes", class: "block py-2 text-gray-700 hover:text-gray-900 font-medium" %>
+      <%= link_to "De pie", "/categoria/de-pie", class: "block py-2 text-gray-700 hover:text-gray-900 font-medium" %>
+      <%= link_to "Exterior", "/categoria/exterior", class: "block py-2 text-gray-700 hover:text-gray-900 font-medium" %>
+      <%= link_to "Contacto", "/contacto", class: "block py-2 text-gray-700 hover:text-gray-900 font-medium" %>
+
+      <!-- Search in mobile menu -->
+      <div class="relative mt-2">
+        <input type="search" placeholder="Buscar productos..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent" aria-label="Buscar productos">
+        <%= inline_svg_tag "search", class: "absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" %>
+      </div>
+    </nav>
   </div>
 </header>
