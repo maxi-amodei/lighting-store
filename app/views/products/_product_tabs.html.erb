@@ -1,0 +1,206 @@
+<div class="p-4" data-controller="tabs">
+  <div class="border-b border-gray-200">
+    <nav class="flex -mb-px space-x-8">
+      <% [
+        { id: "description", label: "Descripción" },
+        { id: "specifications", label: "Especificaciones" },
+        { id: "reviews", label: "Reseñas" }
+      ].each do |tab| %>
+        <button class="px-1 py-4 font-medium border-b-2 tab-button whitespace-nowrap focus:outline-none"
+                data-action="click->tabs#changeTab"
+          data-tab="<%= tab[:id] %>"
+          data-tabs-target="tabButton"
+          class="<%= tab[:id] == 'description' ? 'border-gray-900 text-gray-900' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' %>">
+          <%= tab[:label] %>
+        </button>
+      <% end %>
+    </nav>
+  </div>
+
+  <!-- Tab Content -->
+  <div class="py-6">
+    <!-- Description Tab -->
+    <div id="description" class="tab-content" data-tabs-target="tabContent">
+      <div class="prose max-w-none">
+        <h2 class="mb-4 text-xl font-semibold text-gray-900">Descripción detallada</h2>
+
+        <p class="mb-4">
+          La <strong>Lámpara Colgante Moderna Esfera Negra</strong> es una pieza de diseño contemporáneo que combina elegancia y funcionalidad. Su forma esférica y acabado en negro mate la convierten en un elemento decorativo que destaca en cualquier ambiente, aportando un toque de sofisticación y estilo.
+        </p>
+
+        <p class="mb-4">
+          Fabricada con materiales de alta calidad, esta lámpara cuenta con una estructura de metal resistente y duradera. El acabado en negro mate no solo le otorga un aspecto moderno, sino que también facilita su integración en diferentes estilos de decoración, desde los más minimalistas hasta los industriales o nórdicos.
+        </p>
+
+        <h3 class="mt-6 mb-2 text-lg font-semibold text-gray-900">Características destacadas</h3>
+
+        <ul class="pl-6 mb-4 list-disc">
+          <li>Diseño esférico moderno que se convierte en el centro de atención de cualquier espacio</li>
+          <li>Acabado en negro mate de alta calidad, resistente a rayones y decoloración</li>
+          <li>Cable ajustable que permite adaptar la altura según las necesidades del espacio</li>
+          <li>Compatible con bombillas LED de hasta 60W con casquillo E27 (incluida)</li>
+          <li>Proyecta una luz cálida y acogedora, ideal para crear ambientes confortables</li>
+          <li>Fácil instalación con todos los accesorios de montaje incluidos</li>
+        </ul>
+
+        <h3 class="mt-6 mb-2 text-lg font-semibold text-gray-900">Usos recomendados</h3>
+
+        <p class="mb-4">
+          Esta lámpara colgante es perfecta para iluminar:
+        </p>
+
+        <ul class="pl-6 mb-4 list-disc">
+          <li>Mesas de comedor, creando un punto focal elegante sobre la mesa</li>
+          <li>Islas de cocina, aportando estilo y funcionalidad</li>
+          <li>Salas de estar, como elemento decorativo y fuente de iluminación</li>
+          <li>Recibidores y entradas, dando la bienvenida con estilo</li>
+          <li>Espacios de trabajo, proporcionando una iluminación adecuada y estética</li>
+        </ul>
+
+        <p class="mb-4">
+          Para obtener el máximo rendimiento, recomendamos instalar esta lámpara a una altura de 60-70 cm sobre la superficie a iluminar. Puede utilizarse individualmente como punto focal o en grupos de dos o tres para crear composiciones más impactantes.
+        </p>
+
+        <p>
+          Todos nuestros productos pasan por rigurosos controles de calidad para garantizar su durabilidad y perfecto funcionamiento. La Lámpara Colgante Moderna Esfera Negra cuenta con 2 años de garantía contra defectos de fabricación.
+        </p>
+      </div>
+    </div>
+
+    <!-- Specifications Tab -->
+    <div id="specifications" class="hidden tab-content" data-tabs-target="tabContent">
+      <h2 class="mb-4 text-xl font-semibold text-gray-900">Especificaciones técnicas</h2>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <tbody class="divide-y divide-gray-200">
+            <% [
+              { name: "Dimensiones", value: "Diámetro: 25 cm (tamaño mediano)" },
+              { name: "Material", value: "Metal con acabado en pintura mate" },
+              { name: "Color", value: "Negro mate" },
+              { name: "Tipo de bombilla", value: "E27 (rosca estándar)" },
+              { name: "Potencia máxima", value: "60W" },
+              { name: "Voltaje", value: "220V - 240V" },
+              { name: "Longitud del cable", value: "150 cm (ajustable)" },
+              { name: "Incluye bombilla", value: "Sí, LED 9W equivalente a 60W" },
+              { name: "Temperatura de color", value: "3000K (luz cálida)" },
+              { name: "Flujo luminoso", value: "800 lúmenes" },
+              { name: "Vida útil de la bombilla", value: "25.000 horas" },
+              { name: "Peso", value: "1.2 kg" },
+              { name: "Certificaciones", value: "CE, RoHS" },
+              { name: "Garantía", value: "2 años" }
+            ].each do |spec| %>
+              <tr>
+                <td class="px-4 py-3 text-sm font-medium text-gray-900 bg-gray-50"><%= spec[:name] %></td>
+                <td class="px-4 py-3 text-sm text-gray-700"><%= spec[:value] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-6">
+        <h3 class="mb-2 text-lg font-semibold text-gray-900">Contenido de la caja</h3>
+        <ul class="pl-6 list-disc">
+          <li>1 x Lámpara Colgante Moderna Esfera Negra</li>
+          <li>1 x Bombilla LED E27 9W (3000K)</li>
+          <li>1 x Kit de montaje (soporte de techo, tornillos, tacos)</li>
+          <li>1 x Manual de instrucciones</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Reviews Tab -->
+    <div id="reviews" class="hidden tab-content" data-tabs-target="tabContent">
+      <div class="mb-6">
+        <h2 class="mb-4 text-xl font-semibold text-gray-900">Reseñas de clientes</h2>
+
+        <div class="flex items-center mb-4">
+          <div class="flex items-center">
+            <span class="mr-2 text-3xl font-bold text-gray-900">4.8</span>
+            <div class="mr-2 stars-container">
+              <% 5.times do %>
+                <%= inline_svg_tag("star", class: "w-5 h-5 text-yellow-400") %>
+              <% end %>
+            </div>
+          </div>
+          <span class="text-sm text-gray-600">Basado en 24 reseñas</span>
+        </div>
+
+        <div class="flex flex-col mb-4 space-y-2">
+          <% [
+            { stars: 5, percentage: 80 },
+            { stars: 4, percentage: 15 },
+            { stars: 3, percentage: 5 },
+            { stars: 2, percentage: 0 },
+            { stars: 1, percentage: 0 }
+          ].each do |rating| %>
+            <div class="flex items-center">
+              <span class="w-16 text-sm text-gray-600"><%= rating[:stars] %> estrellas</span>
+              <div class="w-full h-2 mr-2 bg-gray-200 rounded-full">
+                <div class="h-2 bg-gray-900 rounded-full" style="width: <%= rating[:percentage] %>%"></div>
+              </div>
+              <span class="w-10 text-sm text-gray-600"><%= rating[:percentage] %>%</span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Individual Reviews -->
+      <div class="space-y-6">
+        <% [
+          { 
+            stars: 5,
+            title: "Excelente calidad y diseño",
+            author: "María L.",
+            date: "12/03/2023",
+            text: "Compré esta lámpara para mi comedor y quedó perfecta. El diseño es muy elegante y moderno, justo lo que buscaba. La calidad es excelente, se nota que está bien fabricada. La luz que proyecta es muy agradable y crea un ambiente acogedor. La instalación fue sencilla y rápida. Totalmente recomendable."
+          },
+          {
+            stars: 5,
+            title: "Superó mis expectativas",
+            author: "Carlos R.",
+            date: "28/02/2023",
+            text: "La lámpara es aún más bonita en persona que en las fotos. El acabado negro mate es perfecto y combina con todo. La luz que emite es cálida y agradable. La he instalado sobre la isla de la cocina y ha transformado completamente el espacio. El envío fue rápido y llegó perfectamente embalada. Muy satisfecho con la compra."
+          },
+          {
+            stars: 4,
+            title: "Buena relación calidad-precio",
+            author: "Ana P.",
+            date: "15/01/2023",
+            text: "La lámpara es muy bonita y de buena calidad. El único inconveniente es que el cable podría ser un poco más largo para techos altos. Por lo demás, estoy muy contenta con la compra. La bombilla LED incluida da una luz muy agradable y el diseño es muy actual. La recomendaría sin duda."
+          }
+        ].each do |review| %>
+          <div class="pb-6 border-b border-gray-200">
+            <div class="flex items-center mb-2">
+              <div class="mr-2 stars-container">
+                <% review[:stars].times do %>
+                  <%= inline_svg_tag("star", class: "w-5 h-5 text-yellow-400") %>
+                <% end %>
+                <% (5 - review[:stars]).times do %>
+                  <%= inline_svg_tag("star-empty", class: "w-5 h-5 text-gray-300") %>
+                <% end %>
+              </div>
+              <h3 class="text-lg font-medium text-gray-900"><%= review[:title] %></h3>
+            </div>
+            <div class="flex items-center mb-2 text-sm text-gray-600">
+              <span class="font-medium"><%= review[:author] %></span>
+              <span class="mx-2">•</span>
+              <span>Verificada</span>
+              <span class="mx-2">•</span>
+              <span><%= review[:date] %></span>
+            </div>
+            <p class="text-gray-700"><%= review[:text] %></p>
+          </div>
+        <% end %>
+
+        <!-- More Reviews Button -->
+        <div class="mt-8 text-center">
+          <%= button_to "Ver más reseñas", "#",
+              class: "px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2",
+              data: { turbo: false } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

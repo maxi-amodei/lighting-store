@@ -1,0 +1,21 @@
+<nav class="flex py-3 mb-4 text-gray-700" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-3">
+    <li class="inline-flex items-center">
+      <%= link_to "Inicio", root_path, class: "text-sm text-gray-700 hover:text-gray-900" %>
+    </li>
+    <li>
+      <div class="flex items-center">
+        <%= inline_svg_tag("chevron-right", class: "w-6 h-6 text-gray-400") %>
+        <%= link_to "Lámparas Colgantes", category_path("colgantes"), class: "ml-1 text-sm text-gray-700 hover:text-gray-900 md:ml-2" %>
+      </div>
+    </li>
+    <li aria-current="page">
+      <div class="flex items-center">
+        <%= inline_svg_tag("chevron-right", class: "w-6 h-6 text-gray-400") %>
+        <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">
+          Lámpara Colgante Moderna Esfera Negra
+        </span>
+      </div>
+    </li>
+  </ol>
+</nav> 

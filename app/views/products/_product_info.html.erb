@@ -1,0 +1,139 @@
+<div class="w-full p-4 md:w-1/2" data-controller="product-variants">
+  <div class="flex flex-col h-full">
+    <!-- Product Title -->
+    <h1 class="mb-2 text-3xl font-bold text-gray-900">Lámpara Colgante Moderna Esfera Negra</h1>
+
+    <!-- Product Rating -->
+    <div class="flex items-center mb-4">
+      <div class="mr-2 stars-container" aria-label="4.8 de 5 estrellas">
+        <% 5.times do %>
+          <%= inline_svg_tag("star", class: "w-5 h-5 text-yellow-400") %>
+        <% end %>
+      </div>
+      <span class="text-sm text-gray-600">4.8 (24 reseñas)</span>
+    </div>
+
+    <!-- Product Price -->
+    <div class="mb-6">
+      <div class="flex items-center">
+        <span class="text-3xl font-bold text-gray-900">$24.500</span>
+        <span class="px-2 py-1 ml-2 text-xs font-semibold text-red-800 bg-red-100 rounded">20% OFF</span>
+      </div>
+      <p class="mt-1 text-sm text-gray-600">Precio regular: <span class="line-through">$30.625</span></p>
+      <p class="text-sm text-gray-600">Hasta 6 cuotas sin interés de <span class="font-semibold">$4.083</span></p>
+    </div>
+
+    <!-- Product Variants -->
+    <div class="mb-6">
+      <h2 class="mb-2 text-sm font-medium text-gray-900">Color:</h2>
+      <div class="flex mb-4 space-x-2">
+        <% ["black", "white", "wood", "gold"].each do |color| %>
+          <button class="w-10 h-10 rounded-full bg-<%= color %>-500 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900"
+                  data-action="click->product-variants#selectColor"
+            data-color="<%= color %>"
+            aria-label="<%= color.capitalize %>"
+            aria-pressed="<%= color == 'black' %>">
+          </button>
+        <% end %>
+      </div>
+
+      <h2 class="mb-2 text-sm font-medium text-gray-900">Tamaño:</h2>
+      <div class="flex mb-4 space-x-2">
+        <% ["Pequeño", "Mediano", "Grande"].each do |size| %>
+          <button class="px-4 py-2 text-sm font-medium border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900"
+                  data-action="click->product-variants#selectSize"
+            data-size="<%= size.downcase %>"
+            aria-pressed="<%= size == 'Mediano' %>">
+            <%= size %>
+          </button>
+        <% end %>
+      </div>
+
+      <h2 class="mb-2 text-sm font-medium text-gray-900">Potencia:</h2>
+      <%= select_tag :power, 
+          options_for_select([
+            ["40W - E27", "40w"],
+            ["60W - E27", "60w"],
+            ["100W - E27", "100w"]
+          ], "60w"),
+          class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent" %>
+    </div>
+
+    <!-- Add to Cart -->
+    <div class="mb-6">
+      <div class="flex items-center mb-4">
+        <div class="mr-4">
+          <label for="quantity" class="sr-only">Cantidad</label>
+          <div class="flex items-center border border-gray-300 rounded-md">
+            <button type="button" class="px-3 py-2 text-gray-600 hover:text-gray-900 focus:outline-none" 
+                    data-action="click->product-variants#decreaseQuantity">
+              <%= inline_svg_tag("minus", class: "h-4 w-4") %>
+            </button>
+            <input type="number" id="quantity" name="quantity" min="1" value="1" 
+                   class="w-12 text-center border-0 focus:outline-none focus:ring-0"
+                   data-product-variants-target="quantity">
+            <button type="button" class="px-3 py-2 text-gray-600 hover:text-gray-900 focus:outline-none"
+                    data-action="click->product-variants#increaseQuantity">
+              <%= inline_svg_tag("plus", class: "h-4 w-4") %>
+            </button>
+          </div>
+        </div>
+
+        <%= button_to "#", 
+            class: "flex-1 bg-gray-900 text-white py-3 px-6 rounded-md font-medium hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2",
+            data: { turbo: false } do %>
+          <span class="flex items-center justify-center">
+            <%= inline_svg_tag("shopping-cart", class: "h-5 w-5 mr-2") %>
+            Agregar al carrito
+          </span>
+        <% end %>
+      </div>
+
+      <%= button_to "#",
+          class: "w-full border border-gray-300 text-gray-700 py-3 px-6 rounded-md font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2",
+          data: { turbo: false } do %>
+        <span class="flex items-center justify-center">
+          <%= inline_svg_tag("heart", class: "h-5 w-5 mr-2") %>
+          Agregar a favoritos
+        </span>
+      <% end %>
+    </div>
+
+    <!-- Product Features -->
+    <div class="mb-6">
+      <div class="flex flex-wrap -mx-2">
+        <% [
+          { icon: "check", text: "Envío gratis" },
+          { icon: "check", text: "Stock disponible" },
+          { icon: "check", text: "Garantía 2 años" },
+          { icon: "check", text: "Incluye bombilla LED" }
+        ].each do |feature| %>
+          <div class="w-1/2 px-2 mb-4">
+            <div class="flex items-center">
+              <%= inline_svg_tag(feature[:icon], class: "h-5 w-5 text-gray-900 mr-2") %>
+              <span class="text-sm text-gray-700"><%= feature[:text] %></span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Product Short Description -->
+    <div class="mb-6">
+      <p class="text-gray-700">
+        Lámpara colgante de diseño moderno con forma de esfera en color negro mate. Ideal para iluminar comedores, salas de estar, islas de cocina o entradas. Su diseño minimalista se adapta a cualquier estilo de decoración, aportando elegancia y carácter a tus espacios.
+      </p>
+    </div>
+
+    <!-- Product SKU and Categories -->
+    <div class="mt-auto text-sm text-gray-600">
+      <p>SKU: LC-MOD-ESF-001</p>
+      <p>Categoría: <%= link_to "Lámparas Colgantes", category_path("colgantes"), class: "text-gray-900 hover:underline" %></p>
+      <p>Etiquetas: 
+        <%= link_to "Moderno", "", class: "text-gray-900 hover:underline" %>,
+        <%= link_to "Minimalista", "", class: "text-gray-900 hover:underline" %>,
+        <%= link_to "Negro", "", class: "text-gray-900 hover:underline" %>
+      </p>
+    </div>
+  </div>
+</div>
