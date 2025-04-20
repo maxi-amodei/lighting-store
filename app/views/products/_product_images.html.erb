@@ -1,0 +1,36 @@
+<div class="w-full p-4 md:w-1/2" data-controller="product-gallery">
+  <!-- Main Image -->
+  <div class="mb-4 overflow-hidden rounded-lg zoom-container">
+    <%= image_tag "https://images.unsplash.com/photo-1540932239986-30128078f3c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
+        id: "main-image",
+        class: "w-full h-auto object-cover rounded-lg",
+        alt: "Lámpara Colgante Moderna Esfera Negra en un ambiente de cocina moderna" %>
+  </div>
+
+  <!-- Thumbnails -->
+  <div class="grid grid-cols-5 gap-2">
+    <% [
+      { src: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
+        alt: "Lámpara Colgante Moderna Esfera Negra iluminando un comedor moderno" },
+      { src: "https://images.unsplash.com/photo-1573146500785-c8f4d5c4c4f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
+        alt: "Lámpara Colgante Moderna Esfera Negra vista desde abajo mostrando el detalle de la luz" },
+      { src: "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
+        alt: "Lámpara Colgante Moderna Esfera Negra en un ambiente de sala de estar minimalista" },
+      { src: "https://images.unsplash.com/photo-1540932239986-30128078f3c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
+        alt: "Lámpara Colgante Moderna Esfera Negra en un ambiente de cocina moderna" },
+      { src: "https://images.unsplash.com/photo-1534279316430-52a2a3c21dcf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
+        alt: "Detalle del cable y soporte de la Lámpara Colgante Moderna Esfera Negra" }
+    ].each do |image| %>
+      <button class="overflow-hidden border-2 border-transparent rounded-md thumbnail-btn hover:border-gray-900" 
+              data-action="click->product-gallery#changeImage"
+        data-product-gallery-target="thumbnail"
+        data-img="<%= image[:src] %>"
+        data-alt="<%= image[:alt] %>">
+        <%= image_tag image[:src], 
+            class: "w-full h-auto object-cover", 
+            alt: image[:alt], 
+            loading: "lazy" %>
+      </button>
+    <% end %>
+  </div>
+</div>

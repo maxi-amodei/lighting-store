@@ -1,2 +1,29 @@
 @import "tailwindcss";
 @config "../../../config/tailwind.config.js";
+
+/* todo move to product_images.css */
+.zoom-container {
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.zoom-container img {
+  transition: transform 0.3s ease;
+}
+
+.zoom-container:hover img {
+  transform: scale(1.2);
+}
+
+.thumbnail-btn {
+  transition: all 0.2s ease;
+}
+
+.thumbnail-btn:hover {
+  transform: scale(1.05);
+}
+
+.thumbnail-btn.border-gray-900 {
+  transform: scale(1.05);
+} 
